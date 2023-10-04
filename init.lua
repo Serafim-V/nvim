@@ -1,5 +1,4 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-print(lazypath)
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
@@ -11,10 +10,10 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
-
 require("keys")
 require("options")
-require("lazyp")
+require("lazy").setup(require("plugins"))
 
---vim.cmd.colorscheme("catppuccin")
-vim.cmd.colorscheme("tokyonight")
+vim.cmd.colorscheme("darcula")
+-- vim.cmd.colorscheme("catppuccin")
+-- vim.cmd.colorscheme("tokyonight")

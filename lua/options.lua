@@ -16,3 +16,4 @@ opt.relativenumber = true
 
 opt.termguicolors = true
 opt.wrap = false
+opt.clipboard = 'unnamed'

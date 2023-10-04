@@ -1,4 +1,4 @@
-require("lazy").setup({
+return {
 	{ "tpope/vim-fugitive" },
 	{ "mhinz/vim-startify" },
 	{
@@ -68,6 +68,7 @@ require("lazy").setup({
 	},
 	{
 		"glepnir/lspsaga.nvim",
+		event = "LspAttach",
 		config = function()
 			require("plugins.lspsaga")
 		end,
@@ -109,7 +110,14 @@ require("lazy").setup({
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
 			"f3fora/cmp-spell",
-			"L3MON4D3/LuaSnip",
+			{
+				"L3MON4D3/LuaSnip",
+				config = function()
+					require("plugins.luasnip")
+				end,
+			},
+			"rafamadriz/friendly-snippets",
+			"honza/vim-snippets",
 		},
 		config = function()
 			require("plugins.nvim-cmp")
@@ -140,8 +148,55 @@ require("lazy").setup({
 			require("plugins.telescope")
 		end,
 	},
-	--{
-	--"folke/trouble.nvim",
-	--requires = "nvim-tree/nvim-web-devicons",
-	--},
-})
+	{
+		"folke/trouble.nvim",
+		config = function()
+			require("plugins.trouble")
+		end,
+		requires = "nvim-tree/nvim-web-devicons",
+	},
+	{
+		"nvim-tree/nvim-web-devicons",
+		config = function()
+			require("nvim-web-devicons").setup({})
+		end,
+	},
+	{
+		"rhysd/git-messenger.vim",
+	},
+	{
+		"yardnsm/vim-import-cost",
+		run = "npm install --production",
+	},
+	{
+		"mattkubej/jest.nvim",
+		config = function()
+			require("nvim-jest").setup({
+				jest_cmd = "yarn jest",
+			})
+		end,
+	},
+	{
+		"f-person/git-blame.nvim",
+		config = function()
+			require("gitblame").setup({
+				--Note how the `gitblame_` prefix is omitted in `setup`
+				enabled = false,
+			})
+		end,
+	},
+	{
+		"jackMort/ChatGPT.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("chatgpt").setup({
+				-- api_key_cmd = "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",
+			})
+		end,
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+	},
+}
