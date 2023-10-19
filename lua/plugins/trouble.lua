@@ -1,4 +1,5 @@
-require("trouble").setup({
+local trouble = require("trouble")
+trouble.setup({
 	position = "right", -- position of the list can be: bottom, top, left, right
 	height = 10, -- height of the trouble list when position is top or bottom
 	width = 50, -- width of the list when position is left or right
@@ -37,6 +38,7 @@ require("trouble").setup({
 	auto_fold = false, -- automatically fold a file trouble list at creation
 	auto_jump = { "lsp_definitions" }, -- for the given modes, automatically jump if there is only a single result
 	signs = {
+
 		-- icons / text used for a diagnostic
 		error = "",
 		warning = "",
@@ -62,5 +64,8 @@ require("trouble").setup({
 -- })
 
 vim.keymap.set("n", "<leader>tr", function()
-	require("trouble").open("lsp_references")
+	trouble.open("lsp_references")
+end)
+vim.keymap.set("n", "<leader>td", function()
+	trouble.open("document_diagnostics")
 end)

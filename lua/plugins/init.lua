@@ -1,3 +1,5 @@
+local formatting = require("plugins.formatting")
+
 return {
 	{ "tpope/vim-fugitive" },
 	{ "mhinz/vim-startify" },
@@ -60,10 +62,15 @@ return {
 		end,
 	},
 	{
-		"jose-elias-alvarez/null-ls.nvim",
-		event = "LspAttach",
+		"nvim-tree/nvim-tree.lua",
+		version = "*",
+		lazy = false,
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+
 		config = function()
-			require("plugins.null-ls")
+			require("plugins.nvim-tree")
 		end,
 	},
 	{
@@ -91,17 +98,18 @@ return {
 			require("mason").setup({})
 		end,
 	},
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
-		},
-		config = function()
-			require("plugins.neotree")
-		end,
-	},
+	-- {
+	-- 	"nvim-neo-tree/neo-tree.nvim",
+	-- 	branch = "v3.x",
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+	-- 		"MunifTanjim/nui.nvim",
+	-- 	},
+	-- 	config = function()
+	-- 		require("plugins.neotree")
+	-- 	end,
+	-- },
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
@@ -146,6 +154,15 @@ return {
 		},
 		config = function()
 			require("plugins.telescope")
+		end,
+	},
+	{
+		"dawsers/telescope-file-history.nvim",
+		config = function()
+			require("file_history").setup({
+				backup_dir = "~/.file-history-git",
+				git_cmd = "git",
+			})
 		end,
 	},
 	{
@@ -199,4 +216,50 @@ return {
 			"nvim-telescope/telescope.nvim",
 		},
 	},
+	{
+		"kdheepak/lazygit.nvim",
+		requires = {
+			"nvim-telescope/telescope.nvim",
+			"nvim-lua/plenary.nvim",
+		},
+		config = function()
+			require("telescope").load_extension("lazygit")
+		end,
+	},
+	{ "akinsho/toggleterm.nvim", version = "*", config = true },
+	{
+		"tiagovla/scope.nvim",
+		config = function()
+			require("scope").setup({})
+		end,
+	},
+	formatting,
+	-- {
+	-- 	"mfussenegger/nvim-lint",
+	-- 	lazy = true,
+	-- 	event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
+	-- 	config = function()
+	-- 		local lint = require("lint")
+
+	-- 		lint.linters_by_ft = {
+	-- 			javascript = { "eslint_d" },
+	-- 			typescript = { "eslint_d" },
+	-- 			javascriptreact = { "eslint_d" },
+	-- 			typescriptreact = { "eslint_d" },
+	-- 		}
+
+	-- 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+
+	-- 		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+	-- 			group = lint_augroup,
+	-- 			callback = function()
+	-- 				lint.try_lint()
+	-- 			end,
+	-- 		})
+
+	-- 		vim.keymap.set("n", "<leader>ll", function()
+	-- 			lint.try_lint()
+	-- 		end, { desc = "Trigger linting for current file" })
+	-- 	end,
+	-- },
 }

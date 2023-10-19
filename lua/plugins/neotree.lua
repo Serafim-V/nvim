@@ -2,6 +2,10 @@ require("neo-tree").setup({
 	window = {
 		width = 40,
 	},
+	source_selector = {
+		winbar = true,
+		statusline = true,
+	},
 	filesystem = {
 		filtered_items = {
 			visible = false, -- when true, they will just be displayed differently than normal items
@@ -31,6 +35,6 @@ require("neo-tree").setup({
 })
 
 -- vim.keymap.set("n", "<leader>e", ":Neotree float focus<CR>")
-vim.keymap.set("n", "<leader>gs", ":Neotree float git_status<CR>")
-vim.keymap.set("n", "<leader>e", ":NeoTreeRevealToggle<CR>")
-vim.keymap.set("n", "<leader>o", ":NeoTreeFocus<CR>")
+-- vim.keymap.set("n", "<leader>gs", ":Neotree git_status<CR>")
+-- vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>")
+-- vim.keymap.set("n", "<leader>o", ":Neotree focus<CR>")

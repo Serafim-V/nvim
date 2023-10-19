@@ -14,6 +14,6 @@ require("keys")
 require("options")
 require("lazy").setup(require("plugins"))
 
-vim.cmd.colorscheme("darcula")
+-- vim.cmd.colorscheme("darcula")
 -- vim.cmd.colorscheme("catppuccin")
--- vim.cmd.colorscheme("tokyonight")
+vim.cmd.colorscheme("tokyonight")
