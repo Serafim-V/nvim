@@ -1,0 +1,7 @@
+# ~/.config/stylua/stylua.toml (or ./stylua.toml per-project)
+
+column_width = 80       # Line wrap at 80 chars
+indent_type = "Spaces"  # Use spaces (default)
+indent_width = 2        # 2-space indentation (common in Lua/Neovim)
+# quote_style = "Auto"    # Prefer double quotes, but keep existing style
+call_parentheses = "Always"  # Always use parentheses in function calls

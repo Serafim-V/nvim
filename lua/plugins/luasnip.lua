@@ -7,9 +7,9 @@ require("luasnip.loaders.from_snipmate").lazy_load({ paths = { "../snippets" } }
 ls.setup()
 
 ls.add_snippets("all", {
-	ls.snippet("fn", {
-		ls.text_node("imsdfsdfsdf"),
-	}),
+  ls.snippet("fn", {
+    ls.text_node("imsdfsdfsdf"),
+  }),
 })
 
 -- ls.filetype_extend("aZZll", { "_" })

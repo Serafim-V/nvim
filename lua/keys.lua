@@ -14,7 +14,7 @@ keymap("n", "<leader>s", ":w<CR>", default_opts)
 keymap("n", "<leader>q", ":q<CR>", default_opts)
 keymap("n", "|", ":vs<CR>", default_opts)
 -- Close buffer
-keymap("n", "<leader>w", ":bd<CR>", default_opts)
+keymap("n", "<leader>w", ":bp | bd #<CR>", default_opts)
 keymap("n", "<leader>kw", ":%bd<CR>", default_opts)
 
 -- Doublicate line
